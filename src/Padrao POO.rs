@@ -23,4 +23,29 @@ fn main() {
     };
 
     screen.executar();
+
+    // exemplo
+    struct ICreateCategoryDTO {
+        name: String,
+        description: String,
+    }
+    //desestruturar
+    let p = ICreateCategoryDTO {
+        name: String::from("FErnando"),
+        description: String::from("description"),
+    };
+    let ICreateCategoryDTO { name, description } = p;
+
+    pub struct Category {
+        id: String,
+        name: String,
+        description: String,
+    }
+    //interface
+    pub trait ICategoriesRepository {
+        fn desenhar(&self);
+        fn findByName(&self, name: String) -> Category;
+        fn list(&self) -> [Category];
+        fn create(ICreateCategoryDTO { name, description }: ICreateCategoryDTO) -> void;
+    }
 }
